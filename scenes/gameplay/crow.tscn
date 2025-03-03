@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqnqnvxvnqnwl"]
+
+[ext_resource type="Script" path="res://scripts/crow.gd" id="1_lfnwx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yjkqr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjkqr"]
+atlas = SubResource("CompressedTexture2D_yjkqr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjkqs"]
+atlas = SubResource("CompressedTexture2D_yjkqr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjkqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjkqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjkqs")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_yjkqr"]
+
+[node name="Crow" type="Node2D"]
+script = ExtResource("1_lfnwx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yjkqr")
+animation = &"fly"
+
+[node name="DropSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamWAV_yjkqr")

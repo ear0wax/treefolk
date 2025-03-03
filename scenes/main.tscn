@@ -1,0 +1,147 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxs3vwfuv8p5t"]
+
+[ext_resource type="Script" uid="uid://b1ertnuyougjg" path="res://scripts/main.gd" id="1_rnx0q"]
+[ext_resource type="Script" uid="uid://c3k4jt66ult4n" path="res://scripts/camera_controller.gd" id="2_yjkpd"]
+[ext_resource type="Script" uid="uid://ho7o7ki2hfm" path="res://scripts/pixel_art_generator.gd" id="3_yjkpd"]
+[ext_resource type="Script" uid="uid://b4415a615j7al" path="res://scripts/ensure_textures.gd" id="4_yjkpd"]
+[ext_resource type="Script" uid="uid://dl8iy6b7xi1k3" path="res://scripts/ui_controller.gd" id="5_yjkpd"]
+[ext_resource type="Script" uid="uid://2pdbepurgrf3" path="res://scripts/gameplay_controller.gd" id="6_yjkpd"]
+
+[sub_resource type="Environment" id="Environment_qjdvr"]
+background_mode = 1
+background_color = Color(0.529412, 0.807843, 0.921569, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_rnx0q")
+
+[node name="TreePivot" type="Node3D" parent="."]
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+script = ExtResource("2_yjkpd")
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, 0, 10, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qjdvr")
+
+[node name="PixelArtGenerator" type="Node" parent="."]
+script = ExtResource("3_yjkpd")
+
+[node name="TextureEnsurer" type="Node" parent="."]
+script = ExtResource("4_yjkpd")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_yjkpd")
+
+[node name="RegrowTreeButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "Regrow Tree"
+
+[node name="ReRollArtButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 70.0
+offset_right = -20.0
+offset_bottom = 110.0
+grow_horizontal = 0
+text = "ReRoll Art"
+
+[node name="SeedLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 120.0
+offset_right = -20.0
+offset_bottom = 146.0
+grow_horizontal = 0
+text = "Seed: 3146"
+horizontal_alignment = 2
+
+[node name="ResourcePanel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 120.0
+
+[node name="LogIcon" type="TextureRect" parent="UI/ResourcePanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="LogLabel" type="Label" parent="UI/ResourcePanel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 60.0
+text = "Logs:"
+vertical_alignment = 1
+
+[node name="LogCount" type="Label" parent="UI/ResourcePanel"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 20.0
+offset_right = 190.0
+offset_bottom = 60.0
+text = "0"
+vertical_alignment = 1
+
+[node name="TreefolkIcon" type="TextureRect" parent="UI/ResourcePanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 60.0
+offset_bottom = 100.0
+
+[node name="TreefolkLabel" type="Label" parent="UI/ResourcePanel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 60.0
+offset_right = 120.0
+offset_bottom = 100.0
+text = "Folk:"
+vertical_alignment = 1
+
+[node name="TreefolkCount" type="Label" parent="UI/ResourcePanel"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 60.0
+offset_right = 190.0
+offset_bottom = 100.0
+text = "0"
+vertical_alignment = 1
+
+[node name="GameplayController" type="Node" parent="."]
+script = ExtResource("6_yjkpd")

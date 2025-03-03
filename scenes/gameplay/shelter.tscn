@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6yvt5xj2ykbq"]
+
+[ext_resource type="Script" path="res://scripts/shelter.gd" id="1_lfnwx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yjkqr"]
+size = Vector3(1.5, 0.8, 1)
+
+[node name="Shelter" type="Node3D"]
+script = ExtResource("1_lfnwx")
+
+[node name="ShelterModel" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yjkqr")
+surface_material_override/0 = null

@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqnqnvxvnqnwl"]
+
+[ext_resource type="Script" path="res://scripts/treefolk.gd" id="1_lfnwx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yjkqr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjkqr"]
+atlas = SubResource("CompressedTexture2D_yjkqr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjkqs"]
+atlas = SubResource("CompressedTexture2D_yjkqr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjkqt"]
+atlas = SubResource("CompressedTexture2D_yjkqr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjkqu"]
+atlas = SubResource("CompressedTexture2D_yjkqr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjkqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjkqr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjkqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjkqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjkqu")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yjkqr"]
+viewport_path = NodePath("NameLabel/Viewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_yjkqr"]
+font_size = 24
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Treefolk" type="Node3D"]
+script = ExtResource("1_lfnwx")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.03
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_yjkqr")
+animation = &"idle"
+
+[node name="NameLabel" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+pixel_size = 0.01
+billboard = 1
+texture = SubResource("ViewportTexture_yjkqr")
+
+[node name="Viewport" type="SubViewport" parent="NameLabel"]
+transparent_bg = true
+size = Vector2i(200, 50)
+
+[node name="Label" type="Label" parent="NameLabel/Viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Treefolk"
+label_settings = SubResource("LabelSettings_yjkqr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TaskProgressBar" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 100.0
+show_percentage = false
+
+[node name="TaskIcons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="IdleIcon" type="Sprite3D" parent="TaskIcons"]
+visible = false
+pixel_size = 0.02
+billboard = 1
+
+[node name="LogIcon" type="Sprite3D" parent="TaskIcons"]
+visible = false
+pixel_size = 0.02
+billboard = 1
+
+[node name="ShelterIcon" type="Sprite3D" parent="TaskIcons"]
+visible = false
+pixel_size = 0.02
+billboard = 1
+
+[node name="LadderIcon" type="Sprite3D" parent="TaskIcons"]
+visible = false
+pixel_size = 0.02
+billboard = 1
+
+[node name="MaintainIcon" type="Sprite3D" parent="TaskIcons"]
+visible = false
+pixel_size = 0.02
+billboard = 1

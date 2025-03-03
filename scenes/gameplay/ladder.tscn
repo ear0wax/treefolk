@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8yvt5xj2ykbq"]
+
+[ext_resource type="Script" path="res://scripts/ladder.gd" id="1_lfnwx"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yjkqr"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 2.0
+
+[node name="Ladder" type="Node3D"]
+script = ExtResource("1_lfnwx")
+
+[node name="LadderModel" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_yjkqr")
+surface_material_override/0 = null
+
+[node name="Rungs" type="Node3D" parent="."]
+
+[node name="Rung1" type="MeshInstance3D" parent="Rungs"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.8, 0)
+mesh = SubResource("CylinderMesh_yjkqr")
+surface_material_override/0 = null
+skeleton = NodePath("../..")
+
+[node name="Rung2" type="MeshInstance3D" parent="Rungs"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.4, 0)
+mesh = SubResource("CylinderMesh_yjkqr")
+surface_material_override/0 = null
+skeleton = NodePath("../..")
+
+[node name="Rung3" type="MeshInstance3D" parent="Rungs"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_yjkqr")
+surface_material_override/0 = null
+skeleton = NodePath("../..")
+
+[node name="Rung4" type="MeshInstance3D" parent="Rungs"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CylinderMesh_yjkqr")
+surface_material_override/0 = null
+skeleton = NodePath("../..")
+
+[node name="Rung5" type="MeshInstance3D" parent="Rungs"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.8, 0)
+mesh = SubResource("CylinderMesh_yjkqr")
+surface_material_override/0 = null
+skeleton = NodePath("../..")

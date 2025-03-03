@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqnqnvxvnqnwl"]
+
+[ext_resource type="Script" path="res://scripts/branch_generator.gd" id="2_lfnwx"]
+
+[node name="Branch" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.015
+billboard = 0
+transparent = true
+alpha_cut = 1
+texture_filter = 0
+
+[node name="TextureGenerator" type="Node" parent="."]
+script = ExtResource("2_lfnwx")
